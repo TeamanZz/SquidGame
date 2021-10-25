@@ -35,7 +35,7 @@ public class WardenSpawner : MonoBehaviour
         if (ZoneManager.Instance.moneyCount < wardenCost)
             return;
         Vector3 spawnPoint = new Vector3(Random.Range(minX, maxX), yPos, Random.Range(minZ, maxZ));
-        var newWardenGameObject = Instantiate(wardenPrefabs[0], spawnPoint, Quaternion.identity);
+        var newWardenGameObject = Instantiate(wardenPrefabs[0], spawnPoint, Quaternion.Euler(0, 180, 0));
         var newWarden = newWardenGameObject.GetComponent<Warden>();
 
         if (newWarden.transform.position.x > 0)

@@ -5,10 +5,8 @@ using UnityEngine;
 public class WardenDrag : MonoBehaviour
 {
     public float yOffsetForDraggedObject = 1;
-
     Plane plane;
     float distance;
-    Vector3 lastpos;
 
     private void Start()
     {
@@ -27,9 +25,7 @@ public class WardenDrag : MonoBehaviour
     private void OnMouseDown()
     {
         GetComponent<Warden>().target = null;
-        GetComponent<Warden>().SetTarget();
         GetComponent<Warden>().canShoot = false;
-        lastpos = transform.position;
     }
 
     private void OnMouseUp()

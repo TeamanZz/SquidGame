@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class Warden : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class Warden : MonoBehaviour
     public float damage = 1;
     public bool canShoot = true;
     public int wardenStrenght;
+    public Transform shootPoint;
 
     private void Start()
     {
@@ -22,6 +24,18 @@ public class Warden : MonoBehaviour
         target = ZoneManager.Instance.GetNearestToGateEscaper(gameZone);
     }
 
+    private void Update()
+    {
+        if (target != null)
+        {
+            Vector3 relativePos = target.transform.position - transform.position;
+            Quaternion LookAtRotation = Quaternion.LookRotation(relativePos);
+
+            Quaternion LookAtRotationOnly_Y = Quaternion.Euler(transform.rotation.eulerAngles.x, LookAtRotation.eulerAngles.y + 55, transform.rotation.eulerAngles.z);
+            transform.rotation = Quaternion.Slerp(transform.rotation, LookAtRotationOnly_Y, 4 * Time.deltaTime);
+        }
+    }
+
     private IEnumerator ShootRepeatedely()
     {
         while (true)
@@ -31,9 +45,9 @@ public class Warden : MonoBehaviour
             {
                 if (canShoot)
                 {
-                    var newBullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+                    var newBullet = Instantiate(bulletPrefab, shootPoint.position, Quaternion.identity);
                     newBullet.GetComponent<Bullet>().damage = damage;
-                    var forceVector = target.transform.position - transform.position;
+                    var forceVector = target.transform.position - shootPoint.position;
                     newBullet.GetComponent<Rigidbody>().AddForce(forceVector * 5, ForceMode.Impulse);
                 }
             }

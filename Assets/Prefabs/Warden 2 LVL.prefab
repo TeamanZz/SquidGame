@@ -523,7 +523,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ca12945ef841dc45b075e297255af9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  yOffsetForDraggedObject: 0.55
+  yOffsetForDraggedObject: 0.7
 --- !u!54 &1345282690594243417
 Rigidbody:
   m_ObjectHideFlags: 0

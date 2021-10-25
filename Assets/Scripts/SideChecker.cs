@@ -11,9 +11,9 @@ public class SideChecker : MonoBehaviour
     {
         if (other.TryGetComponent<Warden>(out warden))
         {
+            warden.gameZone = gameZone;
             warden.SetTarget();
             warden.canShoot = true;
-            warden.gameZone = gameZone;
         }
     }
 }

@@ -34,7 +34,6 @@ public class ZoneManager : MonoBehaviour
     public void AddWardenToList(Warden warden)
     {
         wardens.Add(warden);
-        warden.SetTarget();
     }
 
     public void RemoveWardenFromList(Warden warden)

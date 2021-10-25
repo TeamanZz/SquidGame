@@ -10,6 +10,9 @@ public class EscapersSpawner : MonoBehaviour
     public float minSpawnTime = 1;
     public float maxSpawnTime = 5;
 
+    public float minXOffset;
+    public float maxXOffset;
+
     private void Start()
     {
         StartCoroutine(SpawnEscapersRepeatedely());
@@ -20,7 +23,7 @@ public class EscapersSpawner : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(Random.Range(minSpawnTime, maxSpawnTime));
-            Vector3 spawnPosition = new Vector3(transform.position.x + Random.Range(-1.8f, 1.8f), 0.1f, transform.position.z);
+            Vector3 spawnPosition = new Vector3(transform.position.x + Random.Range(minXOffset, maxXOffset), 0.1f, transform.position.z);
             var newEscaper = Instantiate(escaperPrefab, spawnPosition, Quaternion.identity);
             var escaperComponent = newEscaper.GetComponent<Escaper>();
             escaperComponent.gameZone = gameZone;
