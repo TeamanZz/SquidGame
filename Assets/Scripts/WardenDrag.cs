@@ -24,12 +24,15 @@ public class WardenDrag : MonoBehaviour
 
     private void OnMouseDown()
     {
-        GetComponent<Warden>().target = null;
+        GetComponent<Animator>().SetBool("IsFlying", true);
+        GetComponent<Warden>().Target = null;
         GetComponent<Warden>().canShoot = false;
     }
 
     private void OnMouseUp()
     {
         transform.position = new Vector3(transform.position.x, 0.25f, transform.position.z);
+        GetComponent<Animator>().SetBool("IsFlying", false);
+
     }
 }

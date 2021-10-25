@@ -6,13 +6,29 @@ using DG.Tweening;
 public class Warden : MonoBehaviour
 {
     public GameZone gameZone;
-    public Escaper target;
     public GameObject bulletPrefab;
     public float timeBetweenShots = 0.5f;
     public float damage = 1;
     public bool canShoot = true;
     public int wardenStrenght;
     public Transform shootPoint;
+
+    private Escaper target;
+    public Escaper Target
+    {
+        get
+        {
+            return target;
+        }
+        set
+        {
+            target = value;
+            if (target == null)
+                GetComponent<Animator>().SetBool("HaveTarget", false);
+            else
+                GetComponent<Animator>().SetBool("HaveTarget", true);
+        }
+    }
 
     private void Start()
     {
@@ -21,14 +37,19 @@ public class Warden : MonoBehaviour
 
     public void SetTarget()
     {
-        target = ZoneManager.Instance.GetNearestToGateEscaper(gameZone);
+        Target = ZoneManager.Instance.GetNearestToGateEscaper(gameZone);
+        Debug.Log("set new target");
+        if (Target != null)
+        {
+            GetComponent<Animator>().SetBool("HaveTarget", true);
+        }
     }
 
     private void Update()
     {
-        if (target != null)
+        if (Target != null)
         {
-            Vector3 relativePos = target.transform.position - transform.position;
+            Vector3 relativePos = Target.transform.position - transform.position;
             Quaternion LookAtRotation = Quaternion.LookRotation(relativePos);
 
             Quaternion LookAtRotationOnly_Y = Quaternion.Euler(transform.rotation.eulerAngles.x, LookAtRotation.eulerAngles.y + 55, transform.rotation.eulerAngles.z);
@@ -41,13 +62,13 @@ public class Warden : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(timeBetweenShots);
-            if (target != null)
+            if (Target != null)
             {
                 if (canShoot)
                 {
                     var newBullet = Instantiate(bulletPrefab, shootPoint.position, Quaternion.identity);
                     newBullet.GetComponent<Bullet>().damage = damage;
-                    var forceVector = target.transform.position - shootPoint.position;
+                    var forceVector = Target.transform.position - shootPoint.position;
                     newBullet.GetComponent<Rigidbody>().AddForce(forceVector * 5, ForceMode.Impulse);
                 }
             }

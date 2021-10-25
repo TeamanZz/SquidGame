@@ -504,13 +504,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameZone: 0
-  target: {fileID: 0}
   bulletPrefab: {fileID: 5865487013945076711, guid: c4b06d02fa5dfcd45b4b79d2d003fd01,
     type: 3}
   timeBetweenShots: 0.4
   damage: 1.5
   canShoot: 1
   wardenStrenght: 1
+  shootPoint: {fileID: 0}
 --- !u!114 &1345282690594243416
 MonoBehaviour:
   m_ObjectHideFlags: 0

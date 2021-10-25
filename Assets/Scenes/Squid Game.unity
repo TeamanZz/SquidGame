@@ -107,9 +107,9 @@ NavMeshSettings:
     serializedVersion: 2
     agentTypeID: 0
     agentRadius: 0.08
-    agentHeight: 2
+    agentHeight: 1
     agentSlope: 45
-    agentClimb: 0.4
+    agentClimb: 0.07
     ledgeDropHeight: 0
     maxJumpAcrossDistance: 0
     minRegionArea: 2
@@ -1227,13 +1227,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1171538586}
-  m_LocalRotation: {x: 0.29387352, y: 0, z: 0, w: 0.95584434}
-  m_LocalPosition: {x: 0, y: 7.69, z: -10.37}
+  m_LocalRotation: {x: 0.25907192, y: 0, z: 0, w: 0.9658581}
+  m_LocalPosition: {x: 0, y: 7.1, z: -10.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 34.18, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 30.03, y: 0, z: 0}
 --- !u!1 &1495450270
 GameObject:
   m_ObjectHideFlags: 0
@@ -1516,14 +1516,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wardenPrefabs:
   - {fileID: 8613679231365403640, guid: d9c0c81558d3a7647966487e6942a18a, type: 3}
-  - {fileID: 1345282690594243393, guid: 80c948fdc3a377c4ca5f3129c3f27859, type: 3}
-  - {fileID: 4804053942977033543, guid: 7b35b0b6526aae046b96a93cbf2d8eb8, type: 3}
+  - {fileID: 8613679231365403640, guid: e69d0170d87622740bed78c8cc47a77d, type: 3}
+  - {fileID: 8613679231365403640, guid: 4afabec09cb41a14a9d989dfd1feeb17, type: 3}
   minX: -2
   maxX: 2
   minZ: -5
   maxZ: 5
-  yPos: 0.25
-  wardenCost: 20
+  yPos: 0
+  wardenCost: 0
 --- !u!114 &1988931591
 MonoBehaviour:
   m_ObjectHideFlags: 0
