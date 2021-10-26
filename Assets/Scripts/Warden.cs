@@ -38,11 +38,9 @@ public class Warden : MonoBehaviour
     public void SetTarget()
     {
         Target = ZoneManager.Instance.GetNearestToGateEscaper(gameZone);
-        Debug.Log("set new target");
+
         if (Target != null)
-        {
             GetComponent<Animator>().SetBool("HaveTarget", true);
-        }
     }
 
     private void Update()
@@ -69,6 +67,7 @@ public class Warden : MonoBehaviour
                     var newBullet = Instantiate(bulletPrefab, shootPoint.position, Quaternion.identity);
                     newBullet.GetComponent<Bullet>().damage = damage;
                     var forceVector = Target.transform.position - shootPoint.position;
+                    forceVector += new Vector3(0, 0.4f, 0);
                     newBullet.GetComponent<Rigidbody>().AddForce(forceVector * 5, ForceMode.Impulse);
                 }
             }

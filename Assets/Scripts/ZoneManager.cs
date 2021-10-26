@@ -19,9 +19,12 @@ public class ZoneManager : MonoBehaviour
     public TextMeshProUGUI moneyText;
     public int moneyCount;
 
+    EscapersSpawner escapersSpawner;
+
     private void Awake()
     {
         Instance = this;
+        escapersSpawner = GetComponent<EscapersSpawner>();
         moneyText.text = moneyCount + " $";
     }
 
