@@ -8,18 +8,21 @@ using TMPro;
 public class ZoneManager : MonoBehaviour
 {
     public static ZoneManager Instance;
+
+    [Header("Конечные ворота")]
+
     public Transform leftEndGate;
     public Transform rightEndGate;
 
-    public List<Warden> wardens = new List<Warden>();
-
-    public List<Escaper> leftZoneEscapers = new List<Escaper>();
-    public List<Escaper> rightZoneEscapers = new List<Escaper>();
-
+    [Header("Валюта")]
     public TextMeshProUGUI moneyText;
     public int moneyCount;
 
-    EscapersSpawner escapersSpawner;
+    [HideInInspector] public List<Warden> wardens = new List<Warden>();
+    [HideInInspector] public List<Escaper> leftZoneEscapers = new List<Escaper>();
+    [HideInInspector] public List<Escaper> rightZoneEscapers = new List<Escaper>();
+
+    private EscapersSpawner escapersSpawner;
 
     private void Awake()
     {

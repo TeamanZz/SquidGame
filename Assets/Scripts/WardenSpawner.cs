@@ -6,17 +6,16 @@ public class WardenSpawner : MonoBehaviour
 {
     public static WardenSpawner Instance;
 
+    public GameObject mergeParticles;
+    public GameObject spawnParticles;
+    public int wardenCost;
     public List<GameObject> wardenPrefabs = new List<GameObject>();
 
-    public float minX;
-    public float maxX;
+    private float minX = -2;
+    private float maxX = 2;
 
-    public float minZ;
-    public float maxZ;
-
-    public float yPos;
-
-    public int wardenCost;
+    private float minZ = -5;
+    private float maxZ = 5;
 
     private void Awake()
     {
@@ -26,6 +25,7 @@ public class WardenSpawner : MonoBehaviour
     public void SpawnWardenOnMerge(Vector3 position, int newWardenStrenght)
     {
         var newWardenGameObject = Instantiate(wardenPrefabs[newWardenStrenght], position, Quaternion.identity);
+        Instantiate(mergeParticles, new Vector3(position.x, position.y - 0.1f, position.z), Quaternion.identity);
         var newWarden = newWardenGameObject.GetComponent<Warden>();
         ZoneManager.Instance.AddWardenToList(newWarden);
     }
@@ -34,8 +34,9 @@ public class WardenSpawner : MonoBehaviour
     {
         if (ZoneManager.Instance.moneyCount < wardenCost)
             return;
-        Vector3 spawnPoint = new Vector3(Random.Range(minX, maxX), yPos, Random.Range(minZ, maxZ));
+        Vector3 spawnPoint = new Vector3(Random.Range(minX, maxX), 0, Random.Range(minZ, maxZ));
         var newWardenGameObject = Instantiate(wardenPrefabs[0], spawnPoint, Quaternion.Euler(0, 180, 0));
+        Instantiate(spawnParticles, new Vector3(spawnPoint.x, spawnPoint.y, spawnPoint.z), Quaternion.identity);
         var newWarden = newWardenGameObject.GetComponent<Warden>();
 
         if (newWarden.transform.position.x > 0)

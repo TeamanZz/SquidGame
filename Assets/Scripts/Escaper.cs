@@ -12,6 +12,9 @@ public class Escaper : MonoBehaviour
     public float currentHealth = 5;
     public Image healthBar;
     public GameZone gameZone;
+    public GameObject deathParticles;
+
+    public bool isLastEnemy;
 
     // Start is called before the first frame update
     void Start()
@@ -29,7 +32,12 @@ public class Escaper : MonoBehaviour
         if (currentHealth <= 0)
         {
             ZoneManager.Instance.RemoveEscaperFromList(this, gameZone);
+            Instantiate(deathParticles, new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z), Quaternion.identity);
+            if (isLastEnemy)
+                ScreensHandler.Instance.ShowSuccessScreen();
             Destroy(gameObject);
+
+
         }
     }
 }
