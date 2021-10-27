@@ -19,6 +19,7 @@ public class ZoneManager : MonoBehaviour
     public int moneyCount;
 
     [HideInInspector] public List<Warden> wardens = new List<Warden>();
+    [HideInInspector] public List<SniperWarden> sniperWardens = new List<SniperWarden>();
     [HideInInspector] public List<Escaper> leftZoneEscapers = new List<Escaper>();
     [HideInInspector] public List<Escaper> rightZoneEscapers = new List<Escaper>();
 
@@ -40,6 +41,11 @@ public class ZoneManager : MonoBehaviour
     public void AddWardenToList(Warden warden)
     {
         wardens.Add(warden);
+    }
+
+    public void AddWardenToList(SniperWarden sniperWarden)
+    {
+        sniperWardens.Add(sniperWarden);
     }
 
     public void RemoveWardenFromList(Warden warden)
@@ -89,6 +95,12 @@ public class ZoneManager : MonoBehaviour
         for (int i = 0; i < wardens.Count; i++)
         {
             wardens[i].SetTarget();
+
+        }
+
+        for (int i = 0; i < sniperWardens.Count; i++)
+        {
+            sniperWardens[i].SetTarget();
         }
     }
 

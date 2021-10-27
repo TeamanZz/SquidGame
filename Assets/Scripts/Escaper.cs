@@ -25,19 +25,17 @@ public class Escaper : MonoBehaviour
         agent.SetDestination(endGate.position);
     }
 
-    public void DescreaseHealth(float value)
+    public void DescreaseHealth(float value, Warden warden)
     {
         currentHealth -= value;
         healthBar.fillAmount -= ((float)value / (float)maxHealth);
         if (currentHealth <= 0)
         {
+            if (warden != null)
+                warden.IncreaseExpBarValue();
             ZoneManager.Instance.RemoveEscaperFromList(this, gameZone);
             Instantiate(deathParticles, new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z), Quaternion.identity);
-            if (isLastEnemy)
-                ScreensHandler.Instance.ShowSuccessScreen();
             Destroy(gameObject);
-
-
         }
     }
 }

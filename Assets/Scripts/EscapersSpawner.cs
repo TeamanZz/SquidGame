@@ -39,6 +39,13 @@ public class EscapersSpawner : MonoBehaviour
     {
         escapersText.text = escapersRemaining.ToString();
         StartCoroutine(SpawnEscapersRepeatedely());
+        InvokeRepeating("CheckOnEndOfLevel", 1, 1);
+    }
+
+    public void CheckOnEndOfLevel()
+    {
+        if (ZoneManager.Instance.leftZoneEscapers.Count == 0 && ZoneManager.Instance.rightZoneEscapers.Count == 0 && escapersRemaining == 0)
+            ScreensHandler.Instance.ShowSuccessScreen();
     }
 
     private IEnumerator SpawnEscapersRepeatedely()
@@ -66,8 +73,7 @@ public class EscapersSpawner : MonoBehaviour
                     var newEscaper = Instantiate(escapers[crowdEnemyType], spawnPosition, Quaternion.identity);
                     var escaperComponent = newEscaper.GetComponent<Escaper>();
                     escaperComponent.gameZone = gameZone;
-                    if (escapersRemaining == 1)
-                        escaperComponent.isLastEnemy = true;
+
                     ZoneManager.Instance.AddEscaperToList(escaperComponent, gameZone);
                     SetNewEscapersTextValue();
                     if (escapersRemaining <= 0)
@@ -80,8 +86,7 @@ public class EscapersSpawner : MonoBehaviour
                 var newEscaper = Instantiate(escapers[enemyType], spawnPosition, Quaternion.identity);
                 var escaperComponent = newEscaper.GetComponent<Escaper>();
                 escaperComponent.gameZone = gameZone;
-                if (escapersRemaining == 1)
-                    escaperComponent.isLastEnemy = true;
+
                 ZoneManager.Instance.AddEscaperToList(escaperComponent, gameZone);
                 SetNewEscapersTextValue();
             }

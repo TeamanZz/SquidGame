@@ -8,6 +8,12 @@ public class WardenSpawner : MonoBehaviour
 
     public GameObject mergeParticles;
     public GameObject spawnParticles;
+
+    public Transform sniperSpawnPointLeft;
+    public Transform sniperSpawnPointRight;
+    public GameObject sniperPrefab;
+
+    public int sniperWardenCost;
     public int wardenCost;
     public List<GameObject> wardenPrefabs = new List<GameObject>();
 
@@ -47,5 +53,41 @@ public class WardenSpawner : MonoBehaviour
         ZoneManager.Instance.AddWardenToList(newWarden);
         ZoneManager.Instance.moneyCount -= wardenCost;
         ZoneManager.Instance.UpdateMoneyCount();
+    }
+
+    public void SpawnSniperWardenOnButton()
+    {
+        if (ZoneManager.Instance.sniperWardens.Count > 1)
+        {
+            return;
+        }
+
+        if (ZoneManager.Instance.moneyCount < sniperWardenCost)
+            return;
+
+        Vector3 spawnPosition = new Vector3();
+        GameZone sniperGameZone;
+        if (ZoneManager.Instance.sniperWardens.Count > 0)
+        {
+            sniperGameZone = GameZone.Right;
+            spawnPosition = sniperSpawnPointRight.position;
+        }
+        else
+        {
+            sniperGameZone = GameZone.Left;
+            spawnPosition = sniperSpawnPointLeft.position;
+        }
+
+        var newWardenGameObject = Instantiate(sniperPrefab, spawnPosition, Quaternion.Euler(0, 180, 0));
+        var newWarden = newWardenGameObject.GetComponent<SniperWarden>();
+        newWarden.gameZone = sniperGameZone;
+
+        ZoneManager.Instance.AddWardenToList(newWarden);
+        ZoneManager.Instance.moneyCount -= sniperWardenCost;
+        ZoneManager.Instance.UpdateMoneyCount();
+
+
+
+
     }
 }

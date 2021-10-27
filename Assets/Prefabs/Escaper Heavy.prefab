@@ -358,7 +358,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.4
-  m_Speed: 1.3
+  m_Speed: 1
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -403,6 +403,7 @@ MonoBehaviour:
   healthBar: {fileID: 8981328103932947442}
   gameZone: 0
   deathParticles: {fileID: 119968, guid: e73000b12fb76244cbffd6abbf8bb6e4, type: 3}
+  isLastEnemy: 0
 --- !u!1 &2964035988161571333
 GameObject:
   m_ObjectHideFlags: 0
