@@ -22,7 +22,8 @@ public class WardenMergeCollider : MonoBehaviour
             ZoneManager.Instance.RemoveWardenFromList(otherWarden);
             WardenSpawner.Instance.SpawnWardenOnMerge(transform.position, thisWarden.wardenStrenght + 1);
             warden.canMerge = false;
-            warden.canMergeParticles.SetActive(false);
+            warden.canMergeParticles[0].SetActive(false);
+            warden.canMergeParticles[1].SetActive(false);
             Destroy(other.gameObject);
             Destroy(transform.parent.gameObject);
         }

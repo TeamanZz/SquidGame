@@ -20,7 +20,7 @@ public class Warden : MonoBehaviour
     public float expValue;
 
     public bool canMerge;
-    public GameObject canMergeParticles;
+    public List<GameObject> canMergeParticles = new List<GameObject>();
 
     private Escaper target;
     public Escaper Target
@@ -44,7 +44,8 @@ public class Warden : MonoBehaviour
         expValue = Mathf.Clamp(expValue + 0.2f, 0, 1);
         if (expValue >= 1)
         {
-            canMergeParticles.SetActive(true);
+            canMergeParticles[0].SetActive(true);
+            canMergeParticles[1].SetActive(true);
             canMerge = true;
         }
         expBarImage.fillAmount = expValue;

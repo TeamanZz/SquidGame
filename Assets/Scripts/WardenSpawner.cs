@@ -17,11 +17,11 @@ public class WardenSpawner : MonoBehaviour
     public int wardenCost;
     public List<GameObject> wardenPrefabs = new List<GameObject>();
 
-    private float minX = -2;
-    private float maxX = 2;
+    private float minX = -2.2f;
+    private float maxX = 2.2f;
 
-    private float minZ = -5;
-    private float maxZ = 5;
+    private float minZ = -2f;
+    private float maxZ = 4f;
 
     private void Awake()
     {
