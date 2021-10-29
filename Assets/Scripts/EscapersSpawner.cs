@@ -10,7 +10,7 @@ public class EscapersSpawner : MonoBehaviour
     public int escapersRemaining;
 
     [Header("Шансы спавна")]
-    public int heavyEscaperSpawnChance;
+    public int unusualEscaperSpawnChance = 8;
     public int crowdSpawnChance;
 
     [Header("Размер толпы")]
@@ -80,7 +80,7 @@ public class EscapersSpawner : MonoBehaviour
                         break;
                 }
             }
-            else
+            else //IF CROWD
             {
                 int enemyType = SetEnemyType();
                 var newEscaper = Instantiate(escapers[enemyType], spawnPosition, Quaternion.identity);
@@ -114,9 +114,9 @@ public class EscapersSpawner : MonoBehaviour
     private int SetEnemyType()
     {
         int enemyType = 0;
-        int needSpawnHeavy = Random.Range(0, heavyEscaperSpawnChance + 1);
-        if (needSpawnHeavy == 0)
-            enemyType = 1;
+        int needSpawnUnusual = Random.Range(0, unusualEscaperSpawnChance + 1);
+        if (needSpawnUnusual == 0)
+            enemyType = Random.Range(1, escapers.Count);
         return enemyType;
     }
 }

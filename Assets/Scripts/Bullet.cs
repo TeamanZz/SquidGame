@@ -5,7 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     [HideInInspector] public float damage = 1;
-    public Warden parentWarden;
+    public WardenBase parentWarden;
     public bool wasCollided;
 
     private void OnTriggerEnter(Collider other)

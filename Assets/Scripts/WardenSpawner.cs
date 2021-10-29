@@ -15,7 +15,8 @@ public class WardenSpawner : MonoBehaviour
 
     public int sniperWardenCost;
     public int wardenCost;
-    public List<GameObject> wardenPrefabs = new List<GameObject>();
+    public List<GameObject> wardensRiflePrefabs = new List<GameObject>();
+    public List<GameObject> wardenTypesPrefabs = new List<GameObject>();
 
     private float minX = -2.2f;
     private float maxX = 2.2f;
@@ -30,20 +31,20 @@ public class WardenSpawner : MonoBehaviour
 
     public void SpawnWardenOnMerge(Vector3 position, int newWardenStrenght)
     {
-        var newWardenGameObject = Instantiate(wardenPrefabs[newWardenStrenght], position, Quaternion.identity);
+        var newWardenGameObject = Instantiate(wardensRiflePrefabs[newWardenStrenght], position, Quaternion.identity);
         Instantiate(mergeParticles, new Vector3(position.x, position.y - 0.1f, position.z), Quaternion.identity);
-        var newWarden = newWardenGameObject.GetComponent<Warden>();
+        var newWarden = newWardenGameObject.GetComponent<WardenBase>();
         ZoneManager.Instance.AddWardenToList(newWarden);
     }
 
-    public void SpawnWardenOnButton()
+    public void SpawnWardenOnButton(int index)
     {
         if (ZoneManager.Instance.moneyCount < wardenCost)
             return;
         Vector3 spawnPoint = new Vector3(Random.Range(minX, maxX), 0, Random.Range(minZ, maxZ));
-        var newWardenGameObject = Instantiate(wardenPrefabs[0], spawnPoint, Quaternion.Euler(0, 180, 0));
+        var newWardenGameObject = Instantiate(wardenTypesPrefabs[index], spawnPoint, Quaternion.Euler(0, 180, 0));
         Instantiate(spawnParticles, new Vector3(spawnPoint.x, spawnPoint.y, spawnPoint.z), Quaternion.identity);
-        var newWarden = newWardenGameObject.GetComponent<Warden>();
+        var newWarden = newWardenGameObject.GetComponent<WardenBase>();
 
         if (newWarden.transform.position.x > 0)
             newWarden.gameZone = GameZone.Right;
@@ -85,9 +86,5 @@ public class WardenSpawner : MonoBehaviour
         ZoneManager.Instance.AddWardenToList(newWarden);
         ZoneManager.Instance.moneyCount -= sniperWardenCost;
         ZoneManager.Instance.UpdateMoneyCount();
-
-
-
-
     }
 }

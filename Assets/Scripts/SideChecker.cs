@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class SideChecker : MonoBehaviour
 {
-    public Warden warden;
+    public WardenBase warden;
     public GameZone gameZone;
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent<Warden>(out warden))
+        if (other.TryGetComponent<WardenBase>(out warden))
         {
             warden.gameZone = gameZone;
             warden.SetTarget();

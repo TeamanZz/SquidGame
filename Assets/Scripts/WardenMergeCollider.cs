@@ -6,11 +6,11 @@ public class WardenMergeCollider : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        Warden warden;
-        if (other.TryGetComponent<Warden>(out warden))
+        WardenBase warden;
+        if (other.TryGetComponent<WardenBase>(out warden))
         {
-            var thisWarden = transform.parent.gameObject.GetComponent<Warden>();
-            var otherWarden = other.gameObject.GetComponent<Warden>();
+            var thisWarden = transform.parent.gameObject.GetComponent<WardenBase>();
+            var otherWarden = other.gameObject.GetComponent<WardenBase>();
 
             if (warden.canMerge == false)
                 return;

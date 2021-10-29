@@ -30,10 +30,9 @@ public class WardenDrag : MonoBehaviour
     private void OnMouseDown()
     {
         GetComponent<Animator>().SetBool("IsFlying", true);
-        GetComponent<Warden>().Target = null;
-        GetComponent<Warden>().canShoot = false;
+        GetComponent<WardenBase>().Target = null;
+        GetComponent<WardenBase>().canShoot = false;
         GetComponent<Rigidbody>().isKinematic = true;
-
     }
 
     private void OnMouseUp()

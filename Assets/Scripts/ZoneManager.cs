@@ -18,7 +18,7 @@ public class ZoneManager : MonoBehaviour
     public TextMeshProUGUI moneyText;
     public int moneyCount;
 
-    [HideInInspector] public List<Warden> wardens = new List<Warden>();
+    [HideInInspector] public List<WardenBase> wardens = new List<WardenBase>();
     [HideInInspector] public List<SniperWarden> sniperWardens = new List<SniperWarden>();
     [HideInInspector] public List<Escaper> leftZoneEscapers = new List<Escaper>();
     [HideInInspector] public List<Escaper> rightZoneEscapers = new List<Escaper>();
@@ -38,7 +38,7 @@ public class ZoneManager : MonoBehaviour
         moneyText.text = moneyCount + " $";
     }
 
-    public void AddWardenToList(Warden warden)
+    public void AddWardenToList(WardenBase warden)
     {
         wardens.Add(warden);
     }
@@ -48,7 +48,7 @@ public class ZoneManager : MonoBehaviour
         sniperWardens.Add(sniperWarden);
     }
 
-    public void RemoveWardenFromList(Warden warden)
+    public void RemoveWardenFromList(WardenBase warden)
     {
         wardens.Remove(warden);
     }
@@ -95,7 +95,6 @@ public class ZoneManager : MonoBehaviour
         for (int i = 0; i < wardens.Count; i++)
         {
             wardens[i].SetTarget();
-
         }
 
         for (int i = 0; i < sniperWardens.Count; i++)
