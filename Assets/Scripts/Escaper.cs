@@ -29,6 +29,25 @@ public class Escaper : MonoBehaviour
         agent.SetDestination(endGate.position);
     }
 
+    public void Explode()
+    {
+        StartCoroutine(IEExplode());
+    }
+
+    private IEnumerator IEExplode()
+    {
+        agent.enabled = false;
+        GetComponent<Rigidbody>().useGravity = true;
+        GetComponent<Rigidbody>().isKinematic = false;
+        GetComponent<Rigidbody>().AddExplosionForce(250, transform.position, 1);
+        yield return new WaitForSeconds(0.4f);
+        GetComponent<Rigidbody>().isKinematic = true;
+        agent.enabled = true;
+        agent.SetDestination(endGate.position);
+        GetComponent<Rigidbody>().useGravity = false;
+
+    }
+
     public void PushBack()
     {
         StartCoroutine(IEPushBack());
@@ -66,7 +85,8 @@ public class Escaper : MonoBehaviour
         if (other.TryGetComponent<Barrier>(out barrier))
         {
             barrier.crushers.Add(this);
-            agent.isStopped = true;
+            if (agent.enabled == true)
+                agent.isStopped = true;
             GetComponent<Animator>().SetBool("IsFighting", true);
         }
     }
@@ -82,7 +102,8 @@ public class Escaper : MonoBehaviour
         if (other.TryGetComponent<Barrier>(out barrier))
         {
             barrier.crushers.Remove(this);
-            agent.isStopped = false;
+            if (agent.enabled == true)
+                agent.isStopped = false;
             GetComponent<Animator>().SetBool("IsFighting", false);
         }
     }

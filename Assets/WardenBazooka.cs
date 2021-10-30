@@ -1,12 +1,14 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class WardenRifle : WardenBase
+public class WardenBazooka : WardenBase
 {
     public GameObject bulletPrefab;
     public float timeBetweenShots = 0.5f;
     public float damage = 1;
     public Transform shootPoint;
+    public float projectileSpeed = 2;
 
     private void Start()
     {
@@ -22,20 +24,15 @@ public class WardenRifle : WardenBase
             {
                 if (canShoot)
                 {
-                    var newBullet = Instantiate(bulletPrefab, shootPoint.position, Quaternion.Euler(-90, 0, -90));
-                    newBullet.GetComponent<Bullet>().damage = damage;
-                    newBullet.GetComponent<Bullet>().parentWarden = this;
+                    var newBullet = Instantiate(bulletPrefab, shootPoint.position, Quaternion.Euler(transform.localEulerAngles.x, transform.localEulerAngles.y - 40, transform.localEulerAngles.z));
+                    newBullet.GetComponent<BazookaProjectile>().damage = damage;
+                    newBullet.GetComponent<BazookaProjectile>().parentWarden = this;
                     var forceVector = Target.transform.position - shootPoint.position;
                     forceVector += new Vector3(0, 0.4f, 0);
-                    newBullet.GetComponent<Rigidbody>().AddForce(forceVector.normalized * 10, ForceMode.Impulse);
+                    newBullet.GetComponent<Rigidbody>().AddForce(forceVector.normalized * projectileSpeed, ForceMode.Impulse);
+
                 }
             }
         }
     }
-}
-
-public enum GameZone
-{
-    Left,
-    Right
 }
