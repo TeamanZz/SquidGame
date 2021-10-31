@@ -34,6 +34,9 @@ public class BazookaProjectile : MonoBehaviour
 
             if (rb != null && rb.GetComponent<BazookaProjectile>() == null && rb.GetComponent<WardenBase>() == null)
             {
+                if (rb.GetComponent<EscaperBase>() == null)
+                    return;
+
                 rb.GetComponent<EscaperBase>().Explode();
                 rb.GetComponent<EscaperBase>().DescreaseHealth(damage, parentWarden);
             }

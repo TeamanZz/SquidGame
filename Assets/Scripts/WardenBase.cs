@@ -57,6 +57,9 @@ public class WardenBase : MonoBehaviour
             LookAtTarget();
 
         RotateExpBarToCamera();
+
+        Mathf.Clamp(transform.position.x, -2.2f, 2.2f);
+        Mathf.Clamp(transform.position.z, -3.5f, 3);
     }
 
     public void IncreaseExpBarValue()
