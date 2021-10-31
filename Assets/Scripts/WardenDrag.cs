@@ -20,9 +20,8 @@ public class WardenDrag : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (plane.Raycast(ray, out distance))
         {
-            float newX = Mathf.Clamp(ray.GetPoint(distance).x, -2, 2);
-            float newZ = Mathf.Clamp(ray.GetPoint(distance).z, -3, 4);
-            // transform.position = new Vector3(newX, ray.GetPoint(distance).y, newZ);
+            float newX = Mathf.Clamp(ray.GetPoint(distance).x, -2.2f, 2.2f);
+            float newZ = Mathf.Clamp(ray.GetPoint(distance).z, -3.5f, 3);
             transform.position = Vector3.Lerp(transform.position, new Vector3(newX, ray.GetPoint(distance).y, newZ), 0.2f);
         }
     }

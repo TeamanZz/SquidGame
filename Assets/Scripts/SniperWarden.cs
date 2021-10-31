@@ -10,8 +10,8 @@ public class SniperWarden : MonoBehaviour
     public float damage = 1;
     public Transform shootPoint;
     private bool canShoot = true;
-    [SerializeField] private Escaper target;
-    public Escaper Target
+    [SerializeField] private EscaperBase target;
+    public EscaperBase Target
     {
         get
         {

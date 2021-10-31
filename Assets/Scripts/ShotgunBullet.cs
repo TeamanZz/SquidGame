@@ -9,8 +9,8 @@ public class ShotgunBullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Escaper escaper;
-        if (!wasCollided && other.gameObject.TryGetComponent<Escaper>(out escaper))
+        EscaperBase escaper;
+        if (!wasCollided && other.gameObject.TryGetComponent<EscaperBase>(out escaper))
         {
             wasCollided = true;
             escaper.PushBack();

@@ -21,8 +21,8 @@ public class WardenSpawner : MonoBehaviour
     private float minX = -2.2f;
     private float maxX = 2.2f;
 
-    private float minZ = -2f;
-    private float maxZ = 4f;
+    private float minZ = -3.5f;
+    private float maxZ = 3f;
 
     private void Awake()
     {

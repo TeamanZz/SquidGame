@@ -27,7 +27,7 @@ public class WardenRifle : WardenBase
                     newBullet.GetComponent<Bullet>().parentWarden = this;
                     var forceVector = Target.transform.position - shootPoint.position;
                     forceVector += new Vector3(0, 0.4f, 0);
-                    newBullet.GetComponent<Rigidbody>().AddForce(forceVector.normalized * 10, ForceMode.Impulse);
+                    newBullet.GetComponent<Rigidbody>().AddForce(forceVector.normalized * 20, ForceMode.Impulse);
                 }
             }
         }

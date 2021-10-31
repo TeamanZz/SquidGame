@@ -2115,6 +2115,7 @@ MonoBehaviour:
   expBarImage: {fileID: 4466546856511766243}
   canShoot: 1
   canMerge: 0
+  hp: 3
   canMergeParticles:
   - {fileID: 6605532697573244054}
   - {fileID: 8377862772248332236}

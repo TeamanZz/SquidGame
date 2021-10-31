@@ -6,17 +6,17 @@ using UnityEngine.UI;
 public class WardenBase : MonoBehaviour
 {
     public GameZone gameZone;
-
     public float expValue;
     public Transform expBar;
     public Image expBarImage;
     public bool canShoot = true;
     public bool canMerge;
+    public int hp;
     public List<GameObject> canMergeParticles = new List<GameObject>();
     public int wardenStrenght;
 
-    private Escaper target;
-    public Escaper Target
+    private EscaperBase target;
+    public EscaperBase Target
     {
         get
         {
@@ -29,6 +29,17 @@ public class WardenBase : MonoBehaviour
                 GetComponent<Animator>().SetBool("HaveTarget", false);
             else
                 GetComponent<Animator>().SetBool("HaveTarget", true);
+        }
+    }
+
+    public void DecreaseHP(KnifeEscaper knifeEscaper)
+    {
+        hp--;
+        if (hp <= 0)
+        {
+            ZoneManager.Instance.RemoveWardenFromList(this);
+            knifeEscaper.GoToGates();
+            Destroy(gameObject);
         }
     }
 

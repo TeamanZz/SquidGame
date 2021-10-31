@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class EndGates : MonoBehaviour
 {
-    Escaper escaper;
+    EscaperBase escaper;
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent<Escaper>(out escaper))
+        if (other.TryGetComponent<EscaperBase>(out escaper))
         {
             ScreensHandler.Instance.ShowLoseScreen();
         }

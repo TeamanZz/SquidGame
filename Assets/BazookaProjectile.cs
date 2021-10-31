@@ -14,8 +14,8 @@ public class BazookaProjectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Escaper escaper;
-        if (!wasCollided && other.gameObject.TryGetComponent<Escaper>(out escaper))
+        EscaperBase escaper;
+        if (!wasCollided && other.gameObject.TryGetComponent<EscaperBase>(out escaper))
         {
             wasCollided = true;
             // escaper.DescreaseHealth(damage, parentWarden);
@@ -34,7 +34,8 @@ public class BazookaProjectile : MonoBehaviour
 
             if (rb != null && rb.GetComponent<BazookaProjectile>() == null && rb.GetComponent<WardenBase>() == null)
             {
-                rb.GetComponent<Escaper>().Explode();
+                rb.GetComponent<EscaperBase>().Explode();
+                rb.GetComponent<EscaperBase>().DescreaseHealth(damage, parentWarden);
             }
         }
     }

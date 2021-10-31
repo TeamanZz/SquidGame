@@ -2714,20 +2714,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameZone: 0
+  expValue: 0
+  expBar: {fileID: 5416812660690653756}
+  expBarImage: {fileID: 9199261947346064203}
+  canShoot: 1
+  canMerge: 0
+  hp: 3
+  canMergeParticles:
+  - {fileID: 443012054716101950}
+  - {fileID: 6367946198414147892}
+  wardenStrenght: 1
   bulletPrefab: {fileID: 5865487013945076711, guid: c4b06d02fa5dfcd45b4b79d2d003fd01,
     type: 3}
   timeBetweenShots: 0.4
   damage: 1.5
-  canShoot: 1
-  wardenStrenght: 1
   shootPoint: {fileID: 5702342656183436124}
-  expBar: {fileID: 5416812660690653756}
-  expBarImage: {fileID: 9199261947346064203}
-  expValue: 0
-  canMerge: 0
-  canMergeParticles:
-  - {fileID: 443012054716101950}
-  - {fileID: 6367946198414147892}
 --- !u!195 &8613679231365403647
 NavMeshAgent:
   m_ObjectHideFlags: 0

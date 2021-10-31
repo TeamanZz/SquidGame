@@ -20,8 +20,8 @@ public class ZoneManager : MonoBehaviour
 
     [HideInInspector] public List<WardenBase> wardens = new List<WardenBase>();
     [HideInInspector] public List<SniperWarden> sniperWardens = new List<SniperWarden>();
-    [HideInInspector] public List<Escaper> leftZoneEscapers = new List<Escaper>();
-    [HideInInspector] public List<Escaper> rightZoneEscapers = new List<Escaper>();
+    [HideInInspector] public List<EscaperBase> leftZoneEscapers = new List<EscaperBase>();
+    [HideInInspector] public List<EscaperBase> rightZoneEscapers = new List<EscaperBase>();
 
     private EscapersSpawner escapersSpawner;
 
@@ -36,6 +36,24 @@ public class ZoneManager : MonoBehaviour
     {
         moneyCount++;
         moneyText.text = moneyCount + " $";
+    }
+
+    public WardenBase GetRandomWarden(GameZone gameZone)
+    {
+        List<WardenBase> tempArray = new List<WardenBase>();
+        for (int i = 0; i < wardens.Count; i++)
+        {
+            if (wardens[i].gameZone == gameZone)
+                tempArray.Add(wardens[i]);
+        }
+
+        if (tempArray.Count != 0)
+        {
+            int wardenIndex = Random.Range(0, tempArray.Count);
+            return tempArray[wardenIndex];
+        }
+        else
+            return null;
     }
 
     public void AddWardenToList(WardenBase warden)
@@ -62,7 +80,7 @@ public class ZoneManager : MonoBehaviour
             rightEndGate;
     }
 
-    public void RemoveEscaperFromList(Escaper escaper, GameZone gameZone)
+    public void RemoveEscaperFromList(EscaperBase escaper, GameZone gameZone)
     {
         if (gameZone == GameZone.Left)
         {
@@ -76,7 +94,7 @@ public class ZoneManager : MonoBehaviour
         SetNewTargetsToWardens();
     }
 
-    public void AddEscaperToList(Escaper escaper, GameZone gameZone)
+    public void AddEscaperToList(EscaperBase escaper, GameZone gameZone)
     {
         if (gameZone == GameZone.Left)
         {
@@ -103,7 +121,7 @@ public class ZoneManager : MonoBehaviour
         }
     }
 
-    public List<Escaper> GetEscapersList(GameZone gameZone)
+    public List<EscaperBase> GetEscapersList(GameZone gameZone)
     {
         if (gameZone == GameZone.Left)
             return leftZoneEscapers;
@@ -111,11 +129,11 @@ public class ZoneManager : MonoBehaviour
             return rightZoneEscapers;
     }
 
-    public Escaper GetNearestToGateEscaper(GameZone gameZone)
+    public EscaperBase GetNearestToGateEscaper(GameZone gameZone)
     {
         float escaperZPos = 0;
         var distance = Mathf.Infinity;
-        Escaper escaper = null;
+        EscaperBase escaper = null;
         if (gameZone == GameZone.Left)
         {
             for (int i = 0; i < leftZoneEscapers.Count; i++)

@@ -71,7 +71,7 @@ public class EscapersSpawner : MonoBehaviour
                 {
                     int crowdEnemyType = SetEnemyType();
                     var newEscaper = Instantiate(escapers[crowdEnemyType], spawnPosition, Quaternion.identity);
-                    var escaperComponent = newEscaper.GetComponent<Escaper>();
+                    var escaperComponent = newEscaper.GetComponent<EscaperBase>();
                     escaperComponent.gameZone = gameZone;
 
                     ZoneManager.Instance.AddEscaperToList(escaperComponent, gameZone);
@@ -84,7 +84,7 @@ public class EscapersSpawner : MonoBehaviour
             {
                 int enemyType = SetEnemyType();
                 var newEscaper = Instantiate(escapers[enemyType], spawnPosition, Quaternion.identity);
-                var escaperComponent = newEscaper.GetComponent<Escaper>();
+                var escaperComponent = newEscaper.GetComponent<EscaperBase>();
                 escaperComponent.gameZone = gameZone;
 
                 ZoneManager.Instance.AddEscaperToList(escaperComponent, gameZone);

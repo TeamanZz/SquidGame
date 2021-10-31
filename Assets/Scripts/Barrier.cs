@@ -8,7 +8,7 @@ public class Barrier : MonoBehaviour
     public float hp = 1;
     public Image hpBar;
 
-    public List<Escaper> crushers = new List<Escaper>();
+    public List<EscaperBase> crushers = new List<EscaperBase>();
 
     public void DecreaseHP()
     {
