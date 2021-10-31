@@ -16,12 +16,23 @@ public class KnifeEscaper : EscaperBase
     {
         if (targetWarden != null)
         {
+
+            LookAtTarget();
             base.agent.destination = targetWarden.transform.position;
             if (!targetWarden.canShoot)
             {
                 GoToGates();
             }
         }
+    }
+
+    private void LookAtTarget()
+    {
+        Vector3 relativePos = targetWarden.transform.position - transform.position;
+        Quaternion LookAtRotation = Quaternion.LookRotation(relativePos);
+
+        Quaternion LookAtRotationOnly_Y = Quaternion.Euler(transform.rotation.eulerAngles.x, LookAtRotation.eulerAngles.y, transform.rotation.eulerAngles.z);
+        transform.rotation = Quaternion.Slerp(transform.rotation, LookAtRotationOnly_Y, 4 * Time.deltaTime);
     }
 
     public void GoToGates()

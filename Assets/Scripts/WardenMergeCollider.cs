@@ -12,7 +12,7 @@ public class WardenMergeCollider : MonoBehaviour
             var thisWarden = transform.parent.gameObject.GetComponent<WardenBase>();
             var otherWarden = other.gameObject.GetComponent<WardenBase>();
 
-            if (warden.canMerge == false)
+            if (warden.canMerge == false || thisWarden.canMerge == false)
                 return;
 
             if ((thisWarden.wardenStrenght != otherWarden.wardenStrenght) || (thisWarden.wardenStrenght == 2 && otherWarden.wardenStrenght == 2))

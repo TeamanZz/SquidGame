@@ -61,13 +61,14 @@ public class EscaperBase : MonoBehaviour
     {
         var forceVector = new Vector3(transform.position.x, 0, -6) - transform.position;
         forceVector += new Vector3(0, 0.4f, 0); // Это сделано для того чтобы летело в середну бегуна, а не ему в ноги
-        if (!agent.isStopped)
+        if (agent.enabled)
             agent.isStopped = true;
         GetComponent<Rigidbody>().isKinematic = false;
-        GetComponent<Rigidbody>().AddForce(forceVector * pushBackForce, ForceMode.Impulse);
+        GetComponent<Rigidbody>().AddForce(forceVector.normalized * pushBackForce, ForceMode.Impulse);
         yield return new WaitForSeconds(1.5f);
         GetComponent<Rigidbody>().isKinematic = true;
-        agent.isStopped = false;
+        if (agent.enabled)
+            agent.isStopped = false;
     }
 
     public void DecreaseBarrierHP()

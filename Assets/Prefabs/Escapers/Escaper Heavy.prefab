@@ -399,13 +399,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   endGate: {fileID: 0}
+  agent: {fileID: 0}
+  maxHealth: 0
   currentHealth: 15
   healthBar: {fileID: 8981328103932947442}
   gameZone: 0
   deathParticles: {fileID: 119968, guid: e73000b12fb76244cbffd6abbf8bb6e4, type: 3}
   isLastEnemy: 0
   barrier: {fileID: 0}
-  pushBackForce: 0.1
+  pushBackForce: 0.3
 --- !u!1 &2964035988161571333
 GameObject:
   m_ObjectHideFlags: 0
