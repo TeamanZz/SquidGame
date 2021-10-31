@@ -57,6 +57,18 @@ public class EscaperBase : MonoBehaviour
         }
     }
 
+    public void DescreaseHealth(float value)
+    {
+        currentHealth -= value;
+        healthBar.fillAmount -= ((float)value / (float)maxHealth);
+        if (currentHealth <= 0)
+        {
+            ZoneManager.Instance.RemoveEscaperFromList(this, gameZone);
+            Instantiate(deathParticles, new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z), Quaternion.identity);
+            Destroy(gameObject);
+        }
+    }
+
     IEnumerator IEPushBack()
     {
         var forceVector = new Vector3(transform.position.x, 0, -6) - transform.position;
