@@ -1904,7 +1904,7 @@ Animator:
   m_GameObject: {fileID: 7296696109297471714}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: fb20b0424c33f4f12895edc43e756479, type: 3}
-  m_Controller: {fileID: 9100000, guid: c8771907193439c418b8a6c8bd8469d8, type: 2}
+  m_Controller: {fileID: 9100000, guid: 5a2636311989e7c44a5c34aa18b08212, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -2003,8 +2003,8 @@ MonoBehaviour:
   wardenStrenght: 0
   bulletPrefab: {fileID: 1204310303290791682, guid: 20b2dd43017e55046888f22b7fb03bf7,
     type: 3}
-  timeBetweenShots: 1
-  damage: 2
+  timeBetweenShots: 2
+  damage: 1
   shootPoint: {fileID: 6766719475892371526}
   projectileSpeed: 7
 --- !u!1 &7339472888311485403

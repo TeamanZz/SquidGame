@@ -20,8 +20,8 @@ public class ZoneManager : MonoBehaviour
 
     [HideInInspector] public List<WardenBase> wardens = new List<WardenBase>();
     [HideInInspector] public List<SniperWarden> sniperWardens = new List<SniperWarden>();
-    [HideInInspector] public List<EscaperBase> leftZoneEscapers = new List<EscaperBase>();
-    [HideInInspector] public List<EscaperBase> rightZoneEscapers = new List<EscaperBase>();
+    public List<EscaperBase> leftZoneEscapers = new List<EscaperBase>();
+    public List<EscaperBase> rightZoneEscapers = new List<EscaperBase>();
 
     private EscapersSpawner escapersSpawner;
 
@@ -134,6 +134,47 @@ public class ZoneManager : MonoBehaviour
         float escaperZPos = 0;
         var distance = Mathf.Infinity;
         EscaperBase escaper = null;
+
+        if (SpellsHandler.Instance.wallRemoved)
+        {
+            float smallestLeftDistance = Mathf.Infinity;
+            float smallestRightDistance = Mathf.Infinity;
+
+            EscaperBase leftEscaper = null;
+            EscaperBase rightEscaper = null;
+
+            for (int i = 0; i < leftZoneEscapers.Count; i++)
+            {
+                escaperZPos = leftZoneEscapers[i].transform.position.z;
+                var newDist = Mathf.Abs(escaperZPos - leftEndGate.position.z);
+                if (newDist < smallestLeftDistance)
+                {
+                    smallestLeftDistance = newDist;
+                    leftEscaper = leftZoneEscapers[i];
+                }
+            }
+
+            for (int i = 0; i < rightZoneEscapers.Count; i++)
+            {
+                escaperZPos = rightZoneEscapers[i].transform.position.z;
+                var newDist = Mathf.Abs(escaperZPos - rightEndGate.position.z);
+                if (newDist < smallestRightDistance)
+                {
+                    smallestRightDistance = newDist;
+                    rightEscaper = rightZoneEscapers[i];
+                }
+            }
+
+            Debug.Log(smallestLeftDistance);
+            Debug.Log(smallestRightDistance);
+            // Time.timeScale = 0;
+
+            if (smallestLeftDistance >= smallestRightDistance)
+                return rightEscaper;
+            else
+                return leftEscaper;
+        }
+
         if (gameZone == GameZone.Left)
         {
             for (int i = 0; i < leftZoneEscapers.Count; i++)
@@ -142,7 +183,7 @@ public class ZoneManager : MonoBehaviour
                 var newDist = Mathf.Abs(escaperZPos - leftEndGate.position.z);
                 if (newDist < distance)
                 {
-                    distance = escaperZPos;
+                    distance = newDist;
                     escaper = leftZoneEscapers[i];
                 }
             }
@@ -155,7 +196,7 @@ public class ZoneManager : MonoBehaviour
                 var newDist = Mathf.Abs(escaperZPos - rightEndGate.position.z);
                 if (newDist < distance)
                 {
-                    distance = escaperZPos;
+                    distance = newDist;
                     escaper = rightZoneEscapers[i];
                 }
             }

@@ -9,10 +9,13 @@ public class WardenDrag : MonoBehaviour
     Plane plane;
     float distance;
 
+    WardenBase warden;
+
     private void Start()
     {
         plane = new Plane(Vector3.up, new Vector3(0, yOffsetForDraggedObject, 0));
         transform.DOMoveY(0, 0.2f);
+        warden = GetComponent<WardenBase>();
     }
 
     void OnMouseDrag()
@@ -28,17 +31,17 @@ public class WardenDrag : MonoBehaviour
 
     private void OnMouseDown()
     {
+        warden.canShoot = false;
+        warden.Target = null;
         GetComponent<Animator>().SetBool("IsFlying", true);
-        GetComponent<WardenBase>().Target = null;
-        GetComponent<WardenBase>().canShoot = false;
         GetComponent<Rigidbody>().isKinematic = true;
     }
 
     private void OnMouseUp()
     {
+        warden.canShoot = true;
         GetComponent<Rigidbody>().isKinematic = false;
         transform.DOMoveY(0, 0.2f);
-        // transform.position = new Vector3(transform.position.x, 0.25f, transform.position.z);
         GetComponent<Animator>().SetBool("IsFlying", false);
     }
 }

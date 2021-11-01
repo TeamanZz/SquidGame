@@ -54,7 +54,7 @@ public class EscapersSpawner : MonoBehaviour
         {
             yield return new WaitForSeconds(Random.Range(minSpawnTime, maxSpawnTime));
 
-            GameZone gameZone = (GameZone)Random.Range(0, 3);
+            GameZone gameZone = (GameZone)Random.Range(0, 2);
             Vector3 spawnPosition = SetSpawnPosition(gameZone);
             int needSpawnCrowd = Random.Range(0, crowdSpawnChance + 1);
 

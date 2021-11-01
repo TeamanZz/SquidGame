@@ -44,21 +44,6 @@ public class KnifeEscaper : EscaperBase
         agent.SetDestination(endGate.position);
     }
 
-    // private IEnumerator StartAttackWarden()
-    // {
-    //     yield return new WaitForSeconds(3);
-    //     if (targetWarden != null)
-    //     {
-    //         ZoneManager.Instance.RemoveWardenFromList(targetWarden);
-    //         Destroy(targetWarden.gameObject);
-    //         targetWarden = null;
-    //         if (agent.enabled == true)
-    //             agent.isStopped = false;
-    //         GetComponent<Animator>().SetBool("IsFighting", false);
-    //         agent.SetDestination(endGate.position);
-    //     }
-    // }
-
     public void PunchTarget()
     {
         if (targetWarden != null)
@@ -72,7 +57,6 @@ public class KnifeEscaper : EscaperBase
     {
         if (targetWarden == null && needRunForWarden)
         {
-            Debug.Log(base.gameZone);
             targetWarden = ZoneManager.Instance.GetRandomWarden(base.gameZone);
         }
     }

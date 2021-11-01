@@ -2611,7 +2611,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 5865487013945076711, guid: c4b06d02fa5dfcd45b4b79d2d003fd01,
     type: 3}
   timeBetweenShots: 0.5
-  damage: 0
+  damage: 1
   shootPoint: {fileID: 5702342656183436124}
 --- !u!195 &8613679231365403647
 NavMeshAgent:

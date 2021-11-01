@@ -22,6 +22,7 @@ public class WardenShotgun : WardenBase
             if (Target != null && canShoot)
             {
                 var newBullet = Instantiate(ammoPrefab, shootPoint.position, Quaternion.Euler(-90, 0, -90));
+                GetComponent<Animator>().Play("Shoot");
                 newBullet.GetComponent<ShotgunBullet>().parentWarden = this;
                 var forceVector = Target.transform.position - shootPoint.position;
                 forceVector += new Vector3(0, 0.4f, 0); // Это сделано для того чтобы летело в середну бегуна, а не ему в ноги

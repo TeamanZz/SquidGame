@@ -11,6 +11,7 @@ public class BazookaProjectile : MonoBehaviour
     public Vector3 rotation;
     public float explodeRadius = 1;
     public float explosionForce;
+    public Vector3 shootPointPosition;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -18,7 +19,6 @@ public class BazookaProjectile : MonoBehaviour
         if (!wasCollided && other.gameObject.TryGetComponent<EscaperBase>(out escaper))
         {
             wasCollided = true;
-            // escaper.DescreaseHealth(damage, parentWarden);
             Explode();
             Instantiate(explosionParticles, transform.position, Quaternion.identity);
             Destroy(gameObject);

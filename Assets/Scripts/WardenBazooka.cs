@@ -24,13 +24,14 @@ public class WardenBazooka : WardenBase
             {
                 if (canShoot)
                 {
-                    var newBullet = Instantiate(bulletPrefab, shootPoint.position, Quaternion.Euler(transform.localEulerAngles.x, transform.localEulerAngles.y - 40, transform.localEulerAngles.z));
-                    newBullet.GetComponent<BazookaProjectile>().damage = damage;
-                    newBullet.GetComponent<BazookaProjectile>().parentWarden = this;
                     var forceVector = Target.transform.position - shootPoint.position;
                     forceVector += new Vector3(0, 0.4f, 0);
+                    GetComponent<Animator>().Play("Shoot");
+                    var newBullet = Instantiate(bulletPrefab, shootPoint.position, Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y + 220, transform.eulerAngles.z));
+                    newBullet.GetComponent<BazookaProjectile>().damage = damage;
+                    newBullet.GetComponent<BazookaProjectile>().parentWarden = this;
+                    newBullet.GetComponent<BazookaProjectile>().shootPointPosition = Target.transform.position;
                     newBullet.GetComponent<Rigidbody>().AddForce(forceVector.normalized * projectileSpeed, ForceMode.Impulse);
-
                 }
             }
         }

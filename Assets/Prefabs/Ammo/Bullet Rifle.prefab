@@ -111,6 +111,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
+  parentWarden: {fileID: 0}
+  wasCollided: 0
 --- !u!54 &5865487013945076705
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -14,6 +14,8 @@ public class EscaperBase : MonoBehaviour
     public GameZone gameZone;
     public GameObject deathParticles;
 
+    public GameObject shockParticles;
+
     public bool isLastEnemy;
     public Barrier barrier;
 
@@ -40,6 +42,17 @@ public class EscaperBase : MonoBehaviour
             if (agent.enabled == true)
                 agent.isStopped = true;
             GetComponent<Animator>().SetBool("IsFighting", true);
+        }
+    }
+
+    protected void OnTriggerExit(Collider other)
+    {
+        if (other.TryGetComponent<Barrier>(out barrier))
+        {
+            barrier.crushers.Remove(this);
+            if (agent.enabled == true)
+                agent.isStopped = false;
+            GetComponent<Animator>().SetBool("IsFighting", false);
         }
     }
 
@@ -77,8 +90,10 @@ public class EscaperBase : MonoBehaviour
             agent.isStopped = true;
         GetComponent<Rigidbody>().isKinematic = false;
         GetComponent<Rigidbody>().AddForce(forceVector.normalized * pushBackForce, ForceMode.Impulse);
+        shockParticles.SetActive(true);
         yield return new WaitForSeconds(1.5f);
         GetComponent<Rigidbody>().isKinematic = true;
+        shockParticles.SetActive(false);
         if (agent.enabled)
             agent.isStopped = false;
     }

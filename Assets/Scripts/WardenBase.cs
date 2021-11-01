@@ -45,10 +45,13 @@ public class WardenBase : MonoBehaviour
 
     public void SetTarget()
     {
-        Target = ZoneManager.Instance.GetNearestToGateEscaper(gameZone);
+        if (canShoot)
+        {
+            Target = ZoneManager.Instance.GetNearestToGateEscaper(gameZone);
 
-        if (Target != null)
-            GetComponent<Animator>().SetBool("HaveTarget", true);
+            if (Target != null)
+                GetComponent<Animator>().SetBool("HaveTarget", true);
+        }
     }
 
     private void Update()
