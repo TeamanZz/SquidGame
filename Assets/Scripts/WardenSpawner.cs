@@ -29,14 +29,6 @@ public class WardenSpawner : MonoBehaviour
         Instance = this;
     }
 
-    public void SpawnWardenOnMerge(Vector3 position, int newWardenStrenght)
-    {
-        var newWardenGameObject = Instantiate(wardensRiflePrefabs[newWardenStrenght], position, Quaternion.identity);
-        Instantiate(mergeParticles, new Vector3(position.x, position.y - 0.1f, position.z), Quaternion.identity);
-        var newWarden = newWardenGameObject.GetComponent<WardenBase>();
-        ZoneManager.Instance.AddWardenToList(newWarden);
-    }
-
     public void SpawnWardenOnButton(int index)
     {
         if (ZoneManager.Instance.moneyCount < wardenCost)

@@ -14,7 +14,6 @@ public class WardenBase : MonoBehaviour
     public int hp;
     public List<GameObject> canMergeParticles = new List<GameObject>();
     public int wardenStrenght;
-
     private EscaperBase target;
     public EscaperBase Target
     {

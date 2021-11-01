@@ -1868,7 +1868,7 @@ GameObject:
   - component: {fileID: 7296696109297471718}
   - component: {fileID: 7296696109297471715}
   m_Layer: 7
-  m_Name: Bazooka Warden
+  m_Name: Warden Bazooka
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1882,7 +1882,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7296696109297471714}
   m_LocalRotation: {x: -0, y: 0.9995904, z: -0, w: 0.028619854}
-  m_LocalPosition: {x: -1.4797647, y: 0.00000011920929, z: -1.0395842}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.45, y: 0.45, z: 0.45}
   m_Children:
   - {fileID: 9059144682419143026}

@@ -292,7 +292,7 @@ GameObject:
   - component: {fileID: 2716488835762228165}
   - component: {fileID: 2716488835762228164}
   m_Layer: 6
-  m_Name: Escaper Heavy
+  m_Name: Heavy Escaper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
