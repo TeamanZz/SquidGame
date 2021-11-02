@@ -20,6 +20,8 @@ public class LevelSettings : MonoBehaviour
 
     [HideInInspector] public List<GameObject> availableEscapersList = new List<GameObject>();
 
+    public RectTransform skillsPanel;
+
     private void Awake()
     {
         Instance = this;
@@ -44,6 +46,8 @@ public class LevelSettings : MonoBehaviour
         wardensButtons[1].SetActive(currentSetup.canSpawnShotgun);
         wardensButtons[2].SetActive(currentSetup.canSpawnBazooka);
         wardensButtons[3].SetActive(currentSetup.canSpawnSniper);
+
+        skillsPanel.sizeDelta = new Vector2(skillsPanel.sizeDelta.x, currentSetup.spellsPanelHeight);
 
         SpellsButtons[0].SetActive(currentSetup.spikeSpellEnabled);
         SpellsButtons[1].SetActive(currentSetup.obstacleSpellEnabled);
@@ -86,7 +90,9 @@ public class LevelSetup
     public bool canSpawnFastEscaper;
     public bool canSpawnKnifeEscaper;
 
-    [Header("Spells")]
+    [Header("Spells (335,235,145)")]
+    public float spellsPanelHeight;
+
     public bool spikeSpellEnabled;
     public bool obstacleSpellEnabled;
     public bool wallSpellEnabled;
