@@ -7,6 +7,7 @@ public class LevelSettings : MonoBehaviour
 {
     public static LevelSettings Instance;
 
+    public bool overridePrefs;
     public int lastLevelIndex = 0;
 
     public List<LevelSetup> levelSetups = new List<LevelSetup>();
@@ -20,17 +21,13 @@ public class LevelSettings : MonoBehaviour
 
     [HideInInspector] public List<GameObject> availableEscapersList = new List<GameObject>();
 
-
     public RectTransform skillsPanel;
-
 
     private void Awake()
     {
         Instance = this;
-
-        // PlayerPrefs.DeleteAll();
-
-        lastLevelIndex = PlayerPrefs.GetInt("LastLevelIndex");
+        if (!overridePrefs)
+            lastLevelIndex = PlayerPrefs.GetInt("LastLevelIndex");
 
         if (lastLevelIndex > 4)
             lastLevelIndex = 4;
@@ -74,6 +71,9 @@ public class LevelSettings : MonoBehaviour
 
         escapersSpawner.minCrowdCount = currentSetup.minCrowdCount;
         escapersSpawner.maxCrowdCount = currentSetup.maxCrowdCount;
+
+        escapersSpawner.minSpawnTimeDecrease = currentSetup.minSpawnTimeDecrease;
+        escapersSpawner.maxSpawnTimeDecrease = currentSetup.maxSpawnTimeDecrease;
     }
 }
 
@@ -82,15 +82,21 @@ public class LevelSetup
 {
     public int startRemainingEscapers;
     public int startMoneyCount;
+    [Space]
 
     public int unusualEnemySpawnChance;
     public int crowdSpawnChance;
+    [Space]
 
     public float minSpawnTime = 1;
     public float maxSpawnTime = 5;
+    [Space]
 
     public int minCrowdCount = 1;
     public int maxCrowdCount = 3;
+    [Space]
+    public float minSpawnTimeDecrease;
+    public float maxSpawnTimeDecrease;
 
     [Header("Wardens")]
     public bool canSpawnRifle = true;
@@ -106,7 +112,7 @@ public class LevelSetup
 
     [Header("Spells (335,235,145)")]
     public float spellsPanelHeight;
-
+    [Space]
     public bool spikeSpellEnabled;
     public bool obstacleSpellEnabled;
     public bool wallSpellEnabled;

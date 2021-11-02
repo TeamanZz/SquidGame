@@ -26,6 +26,9 @@ public class EscapersSpawner : MonoBehaviour
     private float minXOffsetRight = -0.5f;
     private float maxXOffsetRight = 1;
 
+    public float minSpawnTimeDecrease = 0.04f;
+    public float maxSpawnTimeDecrease = 0.06f;
+
     [Space]
 
     public Transform leftSpawnGate;
@@ -50,7 +53,8 @@ public class EscapersSpawner : MonoBehaviour
     {
         if (ZoneManager.Instance.leftZoneEscapers.Count == 0 && ZoneManager.Instance.rightZoneEscapers.Count == 0 && escapersRemaining == 0)
         {
-            PlayerPrefs.SetInt("LastLevelIndex", LevelSettings.Instance.lastLevelIndex++);
+            int newIndex = LevelSettings.Instance.lastLevelIndex + 1;
+            PlayerPrefs.SetInt("LastLevelIndex", newIndex);
             ScreensHandler.Instance.ShowSuccessScreen();
         }
     }
@@ -98,10 +102,10 @@ public class EscapersSpawner : MonoBehaviour
                 SetNewEscapersTextValue();
             }
 
-            if (minSpawnTime > 1.5)
-                minSpawnTime -= 0.04f;
-            if (maxSpawnTime > 1.7f)
-                maxSpawnTime -= 0.06f;
+            if (minSpawnTime > 1.3)
+                minSpawnTime -= minSpawnTimeDecrease;
+            if (maxSpawnTime > 1.4f)
+                maxSpawnTime -= maxSpawnTimeDecrease;
         }
     }
 

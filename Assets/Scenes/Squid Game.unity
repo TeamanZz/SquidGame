@@ -45298,6 +45298,8 @@ MonoBehaviour:
   maxCrowdCount: 2
   minSpawnTime: 3.5
   maxSpawnTime: 5
+  minSpawnTimeDecrease: 0.04
+  maxSpawnTimeDecrease: 0.06
   leftSpawnGate: {fileID: 768665396}
   rightSpawnGate: {fileID: 1107394590}
   escapersText: {fileID: 1424758813}
@@ -45357,11 +45359,11 @@ MonoBehaviour:
     newDamage: 3.3
   bazookaLvlUps:
   - newScale: 0.55
-    newTimeBetweenAttacks: 1.5
-    newDamage: 1.5
-  - newScale: 0.65
     newTimeBetweenAttacks: 1
-    newDamage: 1.5
+    newDamage: 2.3
+  - newScale: 0.65
+    newTimeBetweenAttacks: 0.5
+    newDamage: 3
   shotgunLvlUps:
   - newScale: 0.55
     newTimeBetweenAttacks: 3
@@ -45381,9 +45383,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83587d8d44133084fbec66527dbfe0a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  overridePrefs: 0
   lastLevelIndex: 0
   levelSetups:
-  - startRemainingEscapers: 50
+  - startRemainingEscapers: 35
     startMoneyCount: 50
     unusualEnemySpawnChance: 100
     crowdSpawnChance: 12
@@ -45391,6 +45394,8 @@ MonoBehaviour:
     maxSpawnTime: 5
     minCrowdCount: 1
     maxCrowdCount: 2
+    minSpawnTimeDecrease: 0.08
+    maxSpawnTimeDecrease: 0.12
     canSpawnRifle: 1
     canSpawnShotgun: 0
     canSpawnSniper: 0
@@ -45403,7 +45408,7 @@ MonoBehaviour:
     spikeSpellEnabled: 0
     obstacleSpellEnabled: 0
     wallSpellEnabled: 0
-  - startRemainingEscapers: 60
+  - startRemainingEscapers: 45
     startMoneyCount: 100
     unusualEnemySpawnChance: 5
     crowdSpawnChance: 10
@@ -45411,6 +45416,8 @@ MonoBehaviour:
     maxSpawnTime: 4
     minCrowdCount: 2
     maxCrowdCount: 2
+    minSpawnTimeDecrease: 0.1
+    maxSpawnTimeDecrease: 0.12
     canSpawnRifle: 1
     canSpawnShotgun: 1
     canSpawnSniper: 0
@@ -45423,14 +45430,16 @@ MonoBehaviour:
     spikeSpellEnabled: 1
     obstacleSpellEnabled: 0
     wallSpellEnabled: 0
-  - startRemainingEscapers: 99
-    startMoneyCount: 3500
+  - startRemainingEscapers: 65
+    startMoneyCount: 9000
     unusualEnemySpawnChance: 50
     crowdSpawnChance: 3
     minSpawnTime: 3
     maxSpawnTime: 3.5
-    minCrowdCount: 3
-    maxCrowdCount: 5
+    minCrowdCount: 2
+    maxCrowdCount: 4
+    minSpawnTimeDecrease: 0.08
+    maxSpawnTimeDecrease: 0.1
     canSpawnRifle: 0
     canSpawnShotgun: 0
     canSpawnSniper: 0
@@ -45451,6 +45460,8 @@ MonoBehaviour:
     maxSpawnTime: 4
     minCrowdCount: 2
     maxCrowdCount: 3
+    minSpawnTimeDecrease: 0.1
+    maxSpawnTimeDecrease: 0.12
     canSpawnRifle: 1
     canSpawnShotgun: 1
     canSpawnSniper: 0
@@ -45465,12 +45476,14 @@ MonoBehaviour:
     wallSpellEnabled: 0
   - startRemainingEscapers: 99
     startMoneyCount: 100
-    unusualEnemySpawnChance: 5
-    crowdSpawnChance: 6
+    unusualEnemySpawnChance: 6
+    crowdSpawnChance: 5
     minSpawnTime: 3
     maxSpawnTime: 4
     minCrowdCount: 2
     maxCrowdCount: 5
+    minSpawnTimeDecrease: 0.1
+    maxSpawnTimeDecrease: 0.12
     canSpawnRifle: 1
     canSpawnShotgun: 1
     canSpawnSniper: 1
@@ -45492,6 +45505,8 @@ MonoBehaviour:
     maxSpawnTime: 5
     minCrowdCount: 1
     maxCrowdCount: 3
+    minSpawnTimeDecrease: 0
+    maxSpawnTimeDecrease: 0
     canSpawnRifle: 1
     canSpawnShotgun: 0
     canSpawnSniper: 0
