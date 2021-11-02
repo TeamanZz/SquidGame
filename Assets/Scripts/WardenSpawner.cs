@@ -15,7 +15,6 @@ public class WardenSpawner : MonoBehaviour
 
     public int sniperWardenCost;
     public int wardenCost;
-    public List<GameObject> wardensRiflePrefabs = new List<GameObject>();
     public List<GameObject> wardenTypesPrefabs = new List<GameObject>();
 
     private float minX = -2.2f;

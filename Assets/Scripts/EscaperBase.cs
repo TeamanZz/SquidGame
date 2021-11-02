@@ -16,7 +16,6 @@ public class EscaperBase : MonoBehaviour
 
     public GameObject shockParticles;
 
-    public bool isLastEnemy;
     public Barrier barrier;
 
     public float pushBackForce = 2;

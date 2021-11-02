@@ -5,7 +5,7 @@ using TMPro;
 
 public class EscapersSpawner : MonoBehaviour
 {
-    public List<GameObject> escapers = new List<GameObject>();
+    [HideInInspector] public List<GameObject> escapers = new List<GameObject>();
 
     public int escapersRemaining;
 
@@ -26,14 +26,12 @@ public class EscapersSpawner : MonoBehaviour
     private float minXOffsetRight = -0.5f;
     private float maxXOffsetRight = 1;
 
-
     [Space]
 
     public Transform leftSpawnGate;
     public Transform rightSpawnGate;
 
     public TextMeshProUGUI escapersText;
-
 
     private void Start()
     {
@@ -42,10 +40,19 @@ public class EscapersSpawner : MonoBehaviour
         InvokeRepeating("CheckOnEndOfLevel", 1, 1);
     }
 
+    public void SetEscapersRemaining(int value)
+    {
+        escapersRemaining = value;
+        escapersText.text = escapersRemaining.ToString();
+    }
+
     public void CheckOnEndOfLevel()
     {
         if (ZoneManager.Instance.leftZoneEscapers.Count == 0 && ZoneManager.Instance.rightZoneEscapers.Count == 0 && escapersRemaining == 0)
+        {
+            PlayerPrefs.SetInt("LastLevelIndex", LevelSettings.Instance.lastLevelIndex++);
             ScreensHandler.Instance.ShowSuccessScreen();
+        }
     }
 
     private IEnumerator SpawnEscapersRepeatedely()
@@ -58,7 +65,7 @@ public class EscapersSpawner : MonoBehaviour
             Vector3 spawnPosition = SetSpawnPosition(gameZone);
             int needSpawnCrowd = Random.Range(0, crowdSpawnChance + 1);
 
-            if (needSpawnCrowd == 0)
+            if (needSpawnCrowd == 0) //IF CROWD
             {
                 int crowdCount = 1;
 
@@ -80,7 +87,7 @@ public class EscapersSpawner : MonoBehaviour
                         break;
                 }
             }
-            else //IF CROWD
+            else
             {
                 int enemyType = SetEnemyType();
                 var newEscaper = Instantiate(escapers[enemyType], spawnPosition, Quaternion.identity);
@@ -116,7 +123,9 @@ public class EscapersSpawner : MonoBehaviour
         int enemyType = 0;
         int needSpawnUnusual = Random.Range(0, unusualEscaperSpawnChance + 1);
         if (needSpawnUnusual == 0)
+        {
             enemyType = Random.Range(1, escapers.Count);
+        }
         return enemyType;
     }
 }

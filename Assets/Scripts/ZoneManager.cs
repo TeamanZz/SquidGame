@@ -29,13 +29,19 @@ public class ZoneManager : MonoBehaviour
     {
         Instance = this;
         escapersSpawner = GetComponent<EscapersSpawner>();
-        moneyText.text = moneyCount + " $";
+        moneyText.text = moneyCount.ToString();
     }
 
     public void UpdateMoneyCount()
     {
         moneyCount++;
-        moneyText.text = moneyCount + " $";
+        moneyText.text = moneyCount.ToString();
+    }
+
+    public void SetMoneyCount(int value)
+    {
+        moneyCount = value;
+        moneyText.text = moneyCount.ToString();
     }
 
     public WardenBase GetRandomWarden(GameZone gameZone)
@@ -164,10 +170,6 @@ public class ZoneManager : MonoBehaviour
                     rightEscaper = rightZoneEscapers[i];
                 }
             }
-
-            Debug.Log(smallestLeftDistance);
-            Debug.Log(smallestRightDistance);
-            // Time.timeScale = 0;
 
             if (smallestLeftDistance >= smallestRightDistance)
                 return rightEscaper;

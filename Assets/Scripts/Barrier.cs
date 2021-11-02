@@ -8,6 +8,8 @@ public class Barrier : MonoBehaviour
     public float hp = 1;
     public Image hpBar;
 
+    public GameObject destroyParticles;
+
     public List<EscaperBase> crushers = new List<EscaperBase>();
 
     public void DecreaseHP()
@@ -21,6 +23,8 @@ public class Barrier : MonoBehaviour
                 crushers[i].OnBarrierBroke();
             }
             crushers.Clear();
+            destroyParticles.SetActive(true);
+
             Destroy(gameObject);
         }
     }

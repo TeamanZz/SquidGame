@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class CenterWall : MonoBehaviour
 {
@@ -14,14 +15,17 @@ public class CenterWall : MonoBehaviour
 
     public void RemoveWall()
     {
-        transform.position = new Vector3(transform.position.x, -10, transform.position.z);
+        // DOTween.To(() => transform.position.x, x => transform.position.x = x, newValue, 0.5f).SetUpdate(true);
+        transform.DOMoveY(-0.35f, 2);
+        //  position. = new Vector3(transform.position.x, -10, transform.position.z);
         StartCoroutine(IEResetPositionAfterDelay());
     }
 
     private IEnumerator IEResetPositionAfterDelay()
     {
         yield return new WaitForSeconds(resetDelay);
-        transform.position = defaultPosition;
+        transform.DOMoveY(defaultPosition.y, 2);
+        // transform.position = defaultPosition;
         SpellsHandler.Instance.wallRemoved = false;
     }
 }

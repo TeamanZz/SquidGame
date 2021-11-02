@@ -11,7 +11,6 @@ public class SideChecker : MonoBehaviour
     {
         if (other.TryGetComponent<WardenBase>(out warden))
         {
-            Debug.Log("1");
             warden.gameZone = gameZone;
             warden.SetTarget();
         }
