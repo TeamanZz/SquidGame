@@ -18,7 +18,8 @@ public class KnifeEscaper : EscaperBase
         {
 
             LookAtTarget();
-            base.agent.destination = targetWarden.transform.position;
+            if (agent.enabled)
+                base.agent.destination = targetWarden.transform.position;
             if (!targetWarden.canShoot)
             {
                 GoToGates();

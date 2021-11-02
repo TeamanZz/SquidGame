@@ -6,6 +6,20 @@ public class ShotgunBullet : MonoBehaviour
 {
     public WardenBase parentWarden;
     public bool wasCollided;
+    public float damage;
+
+
+    private void Start()
+    {
+        StartCoroutine(DestroyBulletAfterTime());
+    }
+
+    private IEnumerator DestroyBulletAfterTime()
+    {
+        yield return new WaitForSeconds(5);
+        Destroy(gameObject);
+    }
+
 
     private void OnTriggerEnter(Collider other)
     {
@@ -14,6 +28,7 @@ public class ShotgunBullet : MonoBehaviour
         {
             wasCollided = true;
             escaper.PushBack();
+            escaper.DescreaseHealth(damage, parentWarden);
             Destroy(gameObject);
         }
     }

@@ -13,6 +13,19 @@ public class BazookaProjectile : MonoBehaviour
     public float explosionForce;
     public Vector3 shootPointPosition;
 
+
+    private void Start()
+    {
+        StartCoroutine(DestroyBulletAfterTime());
+    }
+
+    private IEnumerator DestroyBulletAfterTime()
+    {
+        yield return new WaitForSeconds(5);
+        Destroy(gameObject);
+    }
+
+
     private void OnTriggerEnter(Collider other)
     {
         EscaperBase escaper;

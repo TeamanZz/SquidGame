@@ -19,6 +19,9 @@ public class EscaperBase : MonoBehaviour
     public Barrier barrier;
 
     public float pushBackForce = 2;
+    public bool exploded = false;
+    public bool canCollide = false;
+    SideChecker sideChecker;
 
     protected void Start()
     {
@@ -41,6 +44,20 @@ public class EscaperBase : MonoBehaviour
             if (agent.enabled == true)
                 agent.isStopped = true;
             GetComponent<Animator>().SetBool("IsFighting", true);
+        }
+
+        if (exploded && other.TryGetComponent<SideChecker>(out sideChecker) && canCollide)
+        {
+            GetComponent<Rigidbody>().isKinematic = true;
+            agent.enabled = true;
+            agent.SetDestination(endGate.position);
+            GetComponent<Rigidbody>().useGravity = false;
+            exploded = false;
+            canCollide = false;
+        }
+        else if (exploded && other.TryGetComponent<SideChecker>(out sideChecker) && !canCollide)
+        {
+            StartCoroutine(IEExplodeSec());
         }
     }
 
@@ -71,8 +88,9 @@ public class EscaperBase : MonoBehaviour
 
     public void DescreaseHealth(float value)
     {
-        if (healthBar.gameObject.activeSelf == false)
+        if (healthBar == null)
             return;
+
         currentHealth -= value;
         healthBar.fillAmount -= ((float)value / (float)maxHealth);
         if (currentHealth <= 0)
@@ -113,19 +131,16 @@ public class EscaperBase : MonoBehaviour
     }
     public void Explode()
     {
-        StartCoroutine(IEExplode());
-    }
-
-    private IEnumerator IEExplode()
-    {
         agent.enabled = false;
         GetComponent<Rigidbody>().useGravity = true;
         GetComponent<Rigidbody>().isKinematic = false;
         GetComponent<Rigidbody>().AddExplosionForce(250, transform.position, 1);
-        yield return new WaitForSeconds(0.4f);
-        GetComponent<Rigidbody>().isKinematic = true;
-        agent.enabled = true;
-        agent.SetDestination(endGate.position);
-        GetComponent<Rigidbody>().useGravity = false;
+        exploded = true;
+    }
+
+    private IEnumerator IEExplodeSec()
+    {
+        yield return new WaitForSeconds(0.2f);
+        canCollide = true;
     }
 }

@@ -59,6 +59,8 @@ public class WardenLevelUpsHandler : MonoBehaviour
         warden.transform.localScale = new Vector3(newScale, newScale, newScale);
 
         warden.timeBetweenShots = info[warden.wardenStrenght].newTimeBetweenAttacks;
+        warden.damage = info[warden.wardenStrenght].newDamage;
+
     }
 }
 
@@ -84,5 +86,5 @@ public class WardenBazookaLvlUpInfo : WardenBaseLvlUpInfo
 [System.Serializable]
 public class WardenShotgunLvlUpInfo : WardenBaseLvlUpInfo
 {
-
+    public float newDamage;
 }

@@ -20,13 +20,15 @@ public class LevelSettings : MonoBehaviour
 
     [HideInInspector] public List<GameObject> availableEscapersList = new List<GameObject>();
 
+
     public RectTransform skillsPanel;
+
 
     private void Awake()
     {
         Instance = this;
 
-        PlayerPrefs.DeleteAll();
+        // PlayerPrefs.DeleteAll();
 
         lastLevelIndex = PlayerPrefs.GetInt("LastLevelIndex");
 
@@ -66,6 +68,12 @@ public class LevelSettings : MonoBehaviour
             availableEscapersList.Add(allEscapersList[3]);
 
         escapersSpawner.escapers = availableEscapersList;
+
+        escapersSpawner.minSpawnTime = currentSetup.minSpawnTime;
+        escapersSpawner.maxSpawnTime = currentSetup.maxSpawnTime;
+
+        escapersSpawner.minCrowdCount = currentSetup.minCrowdCount;
+        escapersSpawner.maxCrowdCount = currentSetup.maxCrowdCount;
     }
 }
 
@@ -77,6 +85,12 @@ public class LevelSetup
 
     public int unusualEnemySpawnChance;
     public int crowdSpawnChance;
+
+    public float minSpawnTime = 1;
+    public float maxSpawnTime = 5;
+
+    public int minCrowdCount = 1;
+    public int maxCrowdCount = 3;
 
     [Header("Wardens")]
     public bool canSpawnRifle = true;

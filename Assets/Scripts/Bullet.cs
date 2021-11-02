@@ -8,6 +8,17 @@ public class Bullet : MonoBehaviour
     public WardenBase parentWarden;
     public bool wasCollided;
 
+    private void Start()
+    {
+        StartCoroutine(DestroyBulletAfterTime());
+    }
+
+    private IEnumerator DestroyBulletAfterTime()
+    {
+        yield return new WaitForSeconds(5);
+        Destroy(gameObject);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         EscaperBase escaper;

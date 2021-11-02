@@ -30,18 +30,21 @@ public class ZoneManager : MonoBehaviour
         Instance = this;
         escapersSpawner = GetComponent<EscapersSpawner>();
         moneyText.text = moneyCount.ToString();
+        WardenSpawner.Instance.ColorifyCostText(moneyCount);
     }
 
     public void UpdateMoneyCount()
     {
-        moneyCount++;
+        moneyCount += 15;
         moneyText.text = moneyCount.ToString();
+        WardenSpawner.Instance.ColorifyCostText(moneyCount);
     }
 
     public void SetMoneyCount(int value)
     {
         moneyCount = value;
         moneyText.text = moneyCount.ToString();
+        GetComponent<WardenSpawner>().ColorifyCostText(moneyCount);
     }
 
     public WardenBase GetRandomWarden(GameZone gameZone)

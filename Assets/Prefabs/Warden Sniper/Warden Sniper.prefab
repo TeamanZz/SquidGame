@@ -2541,7 +2541,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 5865487013945076711, guid: c4b06d02fa5dfcd45b4b79d2d003fd01,
     type: 3}
   timeBetweenShots: 5
-  damage: 5
+  damage: 3
   shootPoint: {fileID: 5720815984957531788}
   target: {fileID: 0}
 --- !u!1 &8890098069436094442

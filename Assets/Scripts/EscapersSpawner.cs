@@ -98,7 +98,10 @@ public class EscapersSpawner : MonoBehaviour
                 SetNewEscapersTextValue();
             }
 
-            maxSpawnTime -= 0.01f;
+            if (minSpawnTime > 1.5)
+                minSpawnTime -= 0.04f;
+            if (maxSpawnTime > 1.7f)
+                maxSpawnTime -= 0.06f;
         }
     }
 
@@ -124,7 +127,7 @@ public class EscapersSpawner : MonoBehaviour
         int needSpawnUnusual = Random.Range(0, unusualEscaperSpawnChance + 1);
         if (needSpawnUnusual == 0)
         {
-            enemyType = Random.Range(1, escapers.Count);
+            enemyType = Random.Range(0, escapers.Count);
         }
         return enemyType;
     }

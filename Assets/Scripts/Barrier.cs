@@ -7,6 +7,7 @@ public class Barrier : MonoBehaviour
 {
     public float hp = 1;
     public Image hpBar;
+    public GameObject obstacle;
 
     public GameObject destroyParticles;
 
@@ -20,11 +21,13 @@ public class Barrier : MonoBehaviour
         {
             for (int i = 0; i < crushers.Count; i++)
             {
-                crushers[i].OnBarrierBroke();
+                if (crushers[i] != null)
+                    crushers[i].OnBarrierBroke();
             }
             crushers.Clear();
             destroyParticles.SetActive(true);
 
+            Destroy(obstacle);
             Destroy(gameObject);
         }
     }

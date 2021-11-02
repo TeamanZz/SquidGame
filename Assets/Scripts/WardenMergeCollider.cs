@@ -39,6 +39,9 @@ public class WardenMergeCollider : MonoBehaviour
             }
 
             thisWarden.wardenStrenght++;
+            thisWarden.expValue = 0;
+            thisWarden.expBarImage.fillAmount = 0;
+
 
             thisWarden.canMerge = false;
             thisWarden.canMergeParticles[0].SetActive(false);
