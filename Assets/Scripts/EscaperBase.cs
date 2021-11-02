@@ -71,6 +71,8 @@ public class EscaperBase : MonoBehaviour
 
     public void DescreaseHealth(float value)
     {
+        if (healthBar.gameObject.activeSelf == false)
+            return;
         currentHealth -= value;
         healthBar.fillAmount -= ((float)value / (float)maxHealth);
         if (currentHealth <= 0)
