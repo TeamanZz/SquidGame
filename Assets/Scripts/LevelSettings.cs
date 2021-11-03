@@ -26,6 +26,8 @@ public class LevelSettings : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+
+        // PlayerPrefs.DeleteAll();
         if (!overridePrefs)
             lastLevelIndex = PlayerPrefs.GetInt("LastLevelIndex");
 

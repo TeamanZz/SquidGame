@@ -14,6 +14,8 @@ public class WardenBase : MonoBehaviour
     public int hp;
     public List<GameObject> canMergeParticles = new List<GameObject>();
     public int wardenStrenght;
+
+    public Animator expAnimator;
     private EscaperBase target;
     public EscaperBase Target
     {
@@ -72,6 +74,8 @@ public class WardenBase : MonoBehaviour
             canMergeParticles[0].SetActive(true);
             canMergeParticles[1].SetActive(true);
             canMerge = true;
+            expAnimator.SetBool("IsFull", true);
+
         }
         expBarImage.fillAmount = expValue;
     }

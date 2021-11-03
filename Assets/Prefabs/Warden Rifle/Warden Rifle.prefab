@@ -2189,7 +2189,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.5, y: 0.15, z: 3.5}
+  m_Size: {x: 4.5, y: 0.15, z: 4.5}
   m_Center: {x: 0, y: 0.92, z: 0}
 --- !u!114 &3175615069282365388
 MonoBehaviour:
@@ -2340,6 +2340,7 @@ GameObject:
   - component: {fileID: 8354151517482445752}
   - component: {fileID: 3980710023800710328}
   - component: {fileID: 458653329267639453}
+  - component: {fileID: 8734909508817875950}
   m_Layer: 7
   m_Name: re (2)
   m_TagString: Untagged
@@ -2404,6 +2405,25 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!95 &8734909508817875950
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7369539338439528891}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d2eb51e08ba4c784e91b2f406da500e6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7471263004296298959
 GameObject:
   m_ObjectHideFlags: 0
@@ -2991,6 +3011,7 @@ MonoBehaviour:
   - {fileID: 6920548887767647976}
   - {fileID: 5757024998419987890}
   wardenStrenght: 0
+  expAnimator: {fileID: 8734909508817875950}
   bulletPrefab: {fileID: 5865487013945076711, guid: c4b06d02fa5dfcd45b4b79d2d003fd01,
     type: 3}
   timeBetweenShots: 0.5
@@ -3350,15 +3371,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe25711fa1235564faffde6283e64076, type: 3}
---- !u!1 &6920548887767647976 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8199092689963700088, guid: fe25711fa1235564faffde6283e64076,
-    type: 3}
-  m_PrefabInstance: {fileID: 1280075452833352080}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6920548887767308000 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8199092689963851632, guid: fe25711fa1235564faffde6283e64076,
+    type: 3}
+  m_PrefabInstance: {fileID: 1280075452833352080}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6920548887767647976 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8199092689963700088, guid: fe25711fa1235564faffde6283e64076,
     type: 3}
   m_PrefabInstance: {fileID: 1280075452833352080}
   m_PrefabAsset: {fileID: 0}

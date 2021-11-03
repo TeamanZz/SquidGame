@@ -42,12 +42,11 @@ public class WardenMergeCollider : MonoBehaviour
             thisWarden.expValue = 0;
             thisWarden.expBarImage.fillAmount = 0;
 
-
             thisWarden.canMerge = false;
+            thisWarden.expAnimator.SetBool("IsFull", false);
             thisWarden.canMergeParticles[0].SetActive(false);
             thisWarden.canMergeParticles[1].SetActive(false);
             Destroy(other.gameObject);
         }
     }
-
 }

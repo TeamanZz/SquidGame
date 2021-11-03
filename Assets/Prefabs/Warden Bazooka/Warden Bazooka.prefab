@@ -1906,6 +1906,7 @@ MonoBehaviour:
   - {fileID: 8268687427787998706}
   - {fileID: 6714852028931817128}
   wardenStrenght: 0
+  expAnimator: {fileID: 3829643856474054517}
   bulletPrefab: {fileID: 1204310303290791682, guid: 20b2dd43017e55046888f22b7fb03bf7,
     type: 3}
   timeBetweenShots: 2
@@ -2295,7 +2296,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.5, y: 0.15, z: 3.5}
+  m_Size: {x: 4.3, y: 0.15, z: 4.3}
   m_Center: {x: 0, y: 0.92, z: 0}
 --- !u!114 &4528634375778381014
 MonoBehaviour:
@@ -2353,6 +2354,7 @@ GameObject:
   - component: {fileID: 7000024727830112418}
   - component: {fileID: 2735003567636948898}
   - component: {fileID: 1483807614077437831}
+  - component: {fileID: 3829643856474054517}
   m_Layer: 7
   m_Name: re (2)
   m_TagString: Untagged
@@ -2417,6 +2419,25 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!95 &3829643856474054517
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8398968215419736737}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d2eb51e08ba4c784e91b2f406da500e6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8459378522070057685
 GameObject:
   m_ObjectHideFlags: 0
